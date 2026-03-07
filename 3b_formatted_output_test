@@ -1,0 +1,2 @@
+emotion_detection.emotion_detector('I am so happy I am doing this.')
+{'joy': 0.9947189, 'sadness': 0.012704818, 'anger': 0.0043339236, 'fear': 0.0034732423, 'disgust': 0.00037549555, 'dominant_emotion': 'joy'}

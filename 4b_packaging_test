@@ -1,0 +1,2 @@
+>>> emotion_detection.emotion_detector('I hate working long hours.')
+{'anger': 0.64999825, 'sadness': 0.19678932, 'fear': 0.05567236, 'disgust': 0.03349073, 'joy': 0.008661813, 'dominant_emotion': 'anger'}
