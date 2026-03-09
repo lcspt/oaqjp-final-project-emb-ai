@@ -1,3 +1,9 @@
+"""Emotion detection module.
+
+Provides utilities for analyzing emotions in text and returning
+structured emotion scores.
+"""
+
 from flask import Flask, render_template, request
 from EmotionDetection.emotion_detection import emotion_detector
 
@@ -5,6 +11,10 @@ app = Flask("Emotion Detector")
 
 @app.route("/emotionDetector")
 def detect_emotion():
+    ''' format output of the emotion_detector 
+    sort emotions
+    show highest scoring emotion or error message '''
+
     text_to_analyze = request.args.get('textToAnalyze')
     emotion = emotion_detector(text_to_analyze)
 
@@ -17,7 +27,8 @@ def detect_emotion():
     if emotion["dominant_emotion"] is None:
         dominant_emotion = "<b>Invalid text! Please try again!</b>"
     else:
-        dominant_emotion = f"{details}. The dominant emotion is <b>{emotion['dominant_emotion']}</b>."
+        dominant_emotion = f"{details}. The dominant emotion is <b>"\
+                           f"{emotion['dominant_emotion']}</b>."
 
     return (
         f"For the given statement, the system response is "
@@ -26,7 +37,9 @@ def detect_emotion():
 
 @app.route("/")
 def index():
+    ''' show index, asks for inputstring to pass to /emotionDetector '''
     return render_template('index.html')
-    
+
 if __name__ == '__main__':
     app.run(host='localhost', port='5000')
+    
